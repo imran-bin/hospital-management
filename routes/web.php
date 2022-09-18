@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/',  'index');
+    Route::get('home', 'redriect');
 });
-Route::get('home',[HomeController::class,'redriect']);
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
